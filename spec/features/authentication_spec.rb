@@ -3,6 +3,11 @@ require 'rails_helper'
 RSpec.feature "Authentication of a user", type: :feature do
   scenario "User can sign up" do
     visit '/'
-    expect(page).to have_content("Sign Up")
+    click_link 'Sign Up'
+    fill_in "new-username", with: "Sparkle_Dino"
+    fill_in "new-password", with: "Pa55w0rd"
+    click_button "Submit"
+    expect(page).to have_link("Logout")
+    expect(page).to have_content("Welcome Sparkle_Dino")
   end
 end
