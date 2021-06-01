@@ -5,7 +5,7 @@ RSpec.feature "Posts", type: :feature do
     visit '/'
     click_link 'Sprinkle some glitter'
     expect(page).to have_content("Sprinkle some glitter!")
-    fill_in "post", with: "This is my first glitter"
+    fill_in "body", with: "This is my first glitter"
     click_button "Sprinkle"
     expect(page).to have_content("This is my first glitter")
   end

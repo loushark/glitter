@@ -1,0 +1,7 @@
+<h1>Sprinkle some glitter!</h1>
+   <%= form_tag '/newpost', multipart: true do %>
+   <%= label_tag :body%>
+   <%= text_field_tag :body %>
+   <%= hidden_field_tag :user_id, current_user.id if current_user %>
+   <%= submit_tag "Sprinkle"%>
+<%end%>

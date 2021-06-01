@@ -15,5 +15,5 @@ Rails.application.routes.draw do
   get 'logout', to: 'sessions#destroy', as: 'logout'
 
   get 'newpost', to: 'posts#new', as: 'newpost'
-  post 'createpost', to: 'posts#create', as: 'createpost'
+  post 'newpost', to: 'posts#create'
 end
