@@ -5,7 +5,8 @@
   </head>
   <header>
     <h1>Glitter</h1>
-    <%= link_to "Sign Up"%>
+    <%= link_to "Sign Up", '/users/new', method: :get%>
+    <%= link_to "Login", 'sessions/login', method: :get%>
     <%= link_to "Logout"%>
   </header>
   <body>
