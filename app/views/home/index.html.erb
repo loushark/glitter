@@ -5,12 +5,14 @@
   </head>
   <header>
     <h1>Glitter</h1>
-    <%= link_to "Sign Up", '/users/new', method: :get%>
-    <%= link_to "Login", 'sessions/login', method: :get%>
-    <%= link_to "Logout"%>
+    <%= link_to "Sign Up", signup_path %>
+    <%= link_to "Login", login_path %>
+    <%= link_to "Logout", logout_path %>
   </header>
   <body>
-    <h2> Welcome Name </h2>
+    <% if logged_in? %>
+    <h1>Welcome <%= current_user.username %></h1>
+    <%end%>
 
   </body>
 </html>

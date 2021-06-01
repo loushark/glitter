@@ -7,4 +7,8 @@ class SessionsController < ApplicationController
 
   def login
   end
+
+  def destroy
+    redirect_to root
+  end
 end
