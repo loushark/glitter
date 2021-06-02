@@ -10,6 +10,11 @@ RSpec.feature "Posts", type: :feature do
     expect(page).to have_content("This is my first glitter")
   end
 
+  scenario "User cannot create a post when not logged in" do
+    visit '/'
+    expect(page).not_to have_content("Sprinkle some glitter!")
+  end
+
   scenario "User can view all posts" do
     signup("Sparkle_Dino")
     click_link 'Sprinkle some glitter'

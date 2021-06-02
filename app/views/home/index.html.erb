@@ -1,13 +1,15 @@
-<div id="post-button">
-  <%= link_to "Sprinkle some glitter", newpost_path %>
-</div>
+  <% if logged_in? %>
+    <div id="post-button">
+      <%= link_to "Sprinkle some glitter", newpost_path %>
+    </div>
+  <%end%>
 
 <div>
   <h1>All the glitter</h1>
     <% @posts.each do |post| %>
       <div>
         <p><%=post.body%> </p>
-        <p>posted by <%=@user.username%> </p>
+        <p>posted by <%= User.find(post.user_id).username %> </p>
       </div>
     <% end %>
 </div>
