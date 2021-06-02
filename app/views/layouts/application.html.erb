@@ -9,8 +9,23 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
+  <header>
+    <h1 id="page-title">٭Glitter٭</h1>
+  </header>
+  <nav>
+    <% if !logged_in? %>
+    <h3>welcome Guest!</h3>
+      <%= link_to "Sign Up", signup_path %>
+      <%= link_to "Login", login_path %>
+    <%else%>
+    <h3>welcome <%= current_user.username %>! </h3>
+      <%= link_to "Logout", logout_path %>
+    <%end%>
+  </nav>
   <body>
     <%= yield %>
   </body>
+  <footer>
+    <p>- brought to you by loushark productions ltd -</p>
+  </footer>
 </html>

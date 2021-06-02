@@ -1,20 +1,4 @@
-<!DOCTYPE html>
-<html>
-  <head>
-  <title>Page Title</title>
-  </head>
-  <header>
-    <h1>Glitter</h1>
-    <%= link_to "Sign Up", signup_path %>
-    <%= link_to "Login", login_path %>
-    <%= link_to "Logout", logout_path %>
-  </header>
-  <body>
-    <% if logged_in? %>
-    <h1>Welcome <%= current_user.username %></h1>
-    <%else%>
-    <h1>Welcome Guest!</h1>
-    <%end%>
-    <%= link_to "Sprinkle some glitter", newpost_path %>
-  </body>
-</html>
+
+    <div id="post-button">
+      <%= link_to "Sprinkle some glitter", newpost_path %>
+    </div>
