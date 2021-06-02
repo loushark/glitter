@@ -2,11 +2,7 @@ require 'rails_helper'
 
 RSpec.feature "Posts", type: :feature do
   scenario "User can create a post" do
-    visit '/'
-    click_link 'Sign Up'
-    fill_in "Username", with: "Sparkle_Dino"
-    fill_in "Password", with: "Pa55w0rd"
-    click_button "Submit"
+    signup("Sparkle_Dino")
     click_link 'Sprinkle some glitter'
     expect(page).to have_content("Sprinkle some glitter!")
     fill_in "body", with: "This is my first glitter"
@@ -15,11 +11,7 @@ RSpec.feature "Posts", type: :feature do
   end
 
   scenario "User can view all posts" do
-    visit '/'
-    click_link 'Sign Up'
-    fill_in "Username", with: "Sparkle_Dino"
-    fill_in "Password", with: "Pa55w0rd"
-    click_button "Submit"
+    signup("Sparkle_Dino")
     click_link 'Sprinkle some glitter'
     expect(page).to have_content("Sprinkle some glitter!")
     fill_in "body", with: "This is my first glitter"

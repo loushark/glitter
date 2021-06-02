@@ -2,36 +2,21 @@ require 'rails_helper'
 
 RSpec.feature "Authentication of a user", type: :feature do
   scenario "User can sign up" do
-    visit '/'
-    click_link 'Sign Up'
-    fill_in "Username", with: "Sparkle_Dino"
-    fill_in "Password", with: "Pa55w0rd"
-    click_button "Submit"
+    signup("Sparkle_Dino")
     expect(page).to have_link("Logout")
     expect(page).to have_content("welcome Sparkle_Dino")
   end
 
   scenario "User can login" do
-    visit '/'
-    click_link 'Sign Up'
-    fill_in "Username", with: "Sparkle_Dino"
-    fill_in "Password", with: "Pa55w0rd"
-    click_button "Submit"
+    signup("Sparkle_Dino")
     click_link 'Logout'
-    click_link 'Login'
-    fill_in "Username", with: "Sparkle_Dino"
-    fill_in "Password", with: "Pa55w0rd"
-    click_button "Login"
+    login("Sparkle_Dino")
     expect(page).to have_link("Logout")
     expect(page).to have_content("welcome Sparkle_Dino")
   end
 
   scenario "User can logout" do
-    visit '/'
-    click_link 'Sign Up'
-    fill_in "Username", with: "Sparkle_Dino"
-    fill_in "Password", with: "Pa55w0rd"
-    click_button "Submit"
+    signup("Sparkle_Dino")
     click_link 'Logout'
     expect(page).to have_link("Sign Up")
     expect(page).to have_link("Login")
