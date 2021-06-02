@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'posts/show'
   get 'posts/update'
   get 'posts/destroy'
   root 'home#index'
@@ -16,4 +15,5 @@ Rails.application.routes.draw do
 
   get 'newpost', to: 'posts#new', as: 'newpost'
   post 'newpost', to: 'posts#create'
+
 end

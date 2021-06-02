@@ -1,4 +1,12 @@
+<div id="post-button">
+  <%= link_to "Sprinkle some glitter", newpost_path %>
+</div>
 
-    <div id="post-button">
-      <%= link_to "Sprinkle some glitter", newpost_path %>
-    </div>
+<div>
+  <h1>All the glitter</h1>
+    <% @posts.each do |post| %>
+      <div>
+        <p><%=post.body%> </p>
+      </div>
+    <% end %>
+</div>

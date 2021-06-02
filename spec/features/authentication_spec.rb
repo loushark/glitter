@@ -8,7 +8,7 @@ RSpec.feature "Authentication of a user", type: :feature do
     fill_in "Password", with: "Pa55w0rd"
     click_button "Submit"
     expect(page).to have_link("Logout")
-    expect(page).to have_content("Welcome Sparkle_Dino")
+    expect(page).to have_content("welcome Sparkle_Dino")
   end
 
   scenario "User can login" do
@@ -23,7 +23,7 @@ RSpec.feature "Authentication of a user", type: :feature do
     fill_in "Password", with: "Pa55w0rd"
     click_button "Login"
     expect(page).to have_link("Logout")
-    expect(page).to have_content("Welcome Sparkle_Dino")
+    expect(page).to have_content("welcome Sparkle_Dino")
   end
 
   scenario "User can logout" do
@@ -35,6 +35,6 @@ RSpec.feature "Authentication of a user", type: :feature do
     click_link 'Logout'
     expect(page).to have_link("Sign Up")
     expect(page).to have_link("Login")
-    expect(page).to have_content("Welcome Guest")
+    expect(page).to have_content("welcome Guest")
   end
 end
