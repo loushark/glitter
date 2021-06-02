@@ -22,4 +22,16 @@ RSpec.feature "Posts", type: :feature do
     expect(page).to have_content("This is my first glitter")
     expect(page).to have_content("This is my second glitter")
   end
+
+  scenario "User can see who posted" do
+    signup("Sparkle_Dino")
+    click_link 'Sprinkle some glitter'
+    expect(page).to have_content("Sprinkle some glitter!")
+    fill_in "body", with: "This is my first glitter"
+    click_button "sprinkle"
+    click_link 'Sprinkle some glitter'
+    fill_in "body", with: "This is my second glitter"
+    click_button "sprinkle"
+    expect(page).to have_content("posted by Sparkle_Dino")
+  end
 end
