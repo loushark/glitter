@@ -5,7 +5,7 @@ RSpec.feature "Posts", type: :feature do
     signup("Sparkle_Dino")
     click_link 'Sprinkle some glitter'
     expect(page).to have_content("Sprinkle some glitter!")
-    fill_in "body", with: "This is my first glitter"
+    fill_in 'post_body', with: "This is my first glitter"
     click_button "sprinkle"
     expect(page).to have_content("This is my first glitter")
   end
@@ -19,10 +19,10 @@ RSpec.feature "Posts", type: :feature do
     signup("Sparkle_Dino")
     click_link 'Sprinkle some glitter'
     expect(page).to have_content("Sprinkle some glitter!")
-    fill_in "body", with: "This is my first glitter"
+    fill_in 'post_body', with: "This is my first glitter"
     click_button "sprinkle"
     click_link 'Sprinkle some glitter'
-    fill_in "body", with: "This is my second glitter"
+    fill_in 'post_body', with: "This is my second glitter"
     click_button "sprinkle"
     expect(page).to have_content("This is my first glitter")
     expect(page).to have_content("This is my second glitter")
@@ -32,11 +32,21 @@ RSpec.feature "Posts", type: :feature do
     signup("Sparkle_Dino")
     click_link 'Sprinkle some glitter'
     expect(page).to have_content("Sprinkle some glitter!")
-    fill_in "body", with: "This is my first glitter"
+    fill_in 'post_body', with: "This is my first glitter"
     click_button "sprinkle"
     click_link 'Sprinkle some glitter'
-    fill_in "body", with: "This is my second glitter"
+    fill_in 'post_body', with: "This is my second glitter"
     click_button "sprinkle"
     expect(page).to have_content("posted by Sparkle_Dino")
+  end
+
+  scenario "User can delete their post" do
+    signup("Sparkle_Dino")
+    click_link 'Sprinkle some glitter'
+    fill_in 'post_body', with: "This is my first glitter"
+    click_button "sprinkle"
+    expect(page).to have_link("sweep up glitter")
+    click_link 'sweep up glitter'
+    expect(page).not_to have_link("sweep up glitter")
   end
 end

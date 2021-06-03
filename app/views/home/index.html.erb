@@ -1,15 +1,25 @@
   <% if logged_in? %>
     <div id="post-button">
-      <%= link_to "Sprinkle some glitter", newpost_path %>
+      <%= link_to "Sprinkle some glitter", new_post_path %>
     </div>
   <%end%>
 
 <div>
   <h1>All the glitter</h1>
-    <% @posts.each do |post| %>
+  <% @posts.each do |post| %>
+    <div class="post-div">
+      <p><%=post.body%> </p>
       <div>
-        <p><%=post.body%> </p>
-        <p>posted by <%= User.find(post.user_id).username %> </p>
+        <p class="posted-by">posted by <%= User.find(post.user_id).username %> </p>
       </div>
-    <% end %>
+    <% if current_user ==  User.find(post.user_id)%>
+      <div class="delete-button">
+      <%= link_to(image_tag("broomdelete.png"), post_path(post),
+      method: :delete,
+      data: { confirm: "Are you sure?" }, id: "sweep-button" )%>
+
+      </div>
+      <% end %>
+    </div>
+  <% end %>
 </div>
