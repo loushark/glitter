@@ -45,8 +45,8 @@ RSpec.feature "Posts", type: :feature do
     click_link 'Sprinkle some glitter'
     fill_in 'post_body', with: "This is my first glitter"
     click_button "sprinkle"
-    expect(page).to have_link("sweep up glitter")
-    click_link 'sweep up glitter'
-    expect(page).not_to have_link("sweep up glitter")
+    expect(page).to have_content("This is my first glitter")
+    click_link "sweep-button"
+    expect(page).not_to have_content("This is my first glitter")
   end
 end

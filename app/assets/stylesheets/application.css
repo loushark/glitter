@@ -66,7 +66,7 @@
    font-size: 1.5vmin;
  }
 
-a {
+a, .like-button {
   background-color: #facddc;
   padding: 8px;
   border-radius: 30px;
@@ -153,7 +153,7 @@ color: transparent;
 /* buttons */
 
 .delete-button {
-  margin-top: 10px;
+  /* margin-top: 10px; */
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
@@ -167,4 +167,21 @@ img {
 .posted-by{
   font-size: 12px;
   padding-top: 15px;
+}
+
+#likes-div {
+  margin-top: 30px;
+  /* display: grid; */
+  /* justify-content: flex-end;
+  align-items: flex-end; */
+}
+
+.like-button-div {
+  /* display: flex;
+  justify-content: flex-end;
+  align-items: flex-end; */
+}
+
+.like-button {
+  font-size: 12px;
 }

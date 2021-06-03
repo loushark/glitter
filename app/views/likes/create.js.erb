@@ -1,0 +1,1 @@
+document.querySelector("#number_likes_<%= @post.id %>").innerHTML = "<%= @post.likes.count %> <%= (@post.likes.count) == 1 ? 'sparkle' : 'sparkles'%>";
