@@ -24,9 +24,48 @@
 
         <% if current_user !=  User.find(post.user_id) && logged_in?%>
           <div id="like_button_<%= post.id %>", class="like-button-div">
-            <%= button_to 'add sparkles', post_likes_path(post), remote: true, class: "like-button"%>
+            <%= button_to 'add sparkles', post_likes_path(post), remote: true, class: "like-button" %>
           </div>
         <% end %>
+
+        <% if logged_in?%>
+        <div id="comment-button-div">
+            <%= form_with model: [ post, post.comments.build ] do |form| %>
+              <p>
+                <%= form.text_area :message, placeholder: "reply..." %>
+              </p>
+              <p>
+                <%= form.submit "reply!" %>
+              </p>
+            <% end %>
+        </div>
+      <% end %>
+
+            <h2>Comments</h2>
+      <% post.comments.each do |comment| %>
+        <p>
+          <strong>Commenter:</strong>
+          <%= comment.user_id %>
+        </p>
+
+        <p>
+          <strong>Comment:</strong>
+          <%= comment.message %>
+        </p>
+      <% end %>
+
+
+
+        <div class="comments-content">
+          <div class="all-comments" id="all-comments-<%=post.id%>">
+              <% @comments.each do |comment| %>
+                <%= comment.message %>
+              <% end %>
+          </div>
+        </div>
+
+
+
 
       <% if current_user ==  User.find(post.user_id)%>
         <div class="delete-button">

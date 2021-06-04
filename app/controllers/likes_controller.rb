@@ -22,7 +22,7 @@ class LikesController < ApplicationController
 
   def find_like
      @like = @post.likes.find_by(user_id: current_user.id, post_id: params[:post_id])
-end
+   end
 
   def already_liked?
   Like.where(user_id: current_user.id, post_id:

@@ -188,6 +188,12 @@ img {
 
 .like-button {
   font-size: 12px;
+  cursor: pointer;
+}
+
+.like-button:visited {
+  font-size: 12px;
+  background-color: gray;
 }
 
 #home-button {
