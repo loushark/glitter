@@ -19,6 +19,10 @@
      margin:0;
  }
 
+ a {
+   text-decoration: none;
+ }
+
  body {
    font-family: sans-serif;
    margin: 0;
@@ -66,7 +70,7 @@
    font-size: 1.5vmin;
  }
 
-a, .like-button {
+.like-button, #signup-button, #login-button , #logout-button, #post-button  {
   background-color: #facddc;
   padding: 8px;
   border-radius: 30px;
@@ -92,13 +96,13 @@ footer {
 }
 
 #page-title {
-  font-family: "marker felt";
-  font-size: 6vmin;
+  font-family: "Arial Rounded MT Bold";
+  font-size: 8vmin;
   background: url('aquaglitter.jpeg');
--webkit-background-clip: text;
--moz-background-clip: text;
-background-clip: text;
-color: transparent;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  color: transparent;
   /* background: url('confetti.png'); */
 }
 
@@ -184,4 +188,23 @@ img {
 
 .like-button {
   font-size: 12px;
+}
+
+#home-button {
+  align-self: flex-start;
+}
+
+#posts-title {
+  font-family: "Arial Rounded MT Bold";
+  font-size: 4vmin;
+  background: url('aquaglitter.jpeg');
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+#post-button-div {
+  margin-top: 50px;
+  margin-bottom: 50px;
 }

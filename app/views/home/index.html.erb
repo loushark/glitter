@@ -1,11 +1,11 @@
   <% if logged_in? %>
-    <div id="post-button">
-      <%= link_to "Sprinkle some glitter", new_post_path %>
+    <div id="post-button-div">
+      <%= link_to "Sprinkle some glitter", new_post_path, id:"post-button"%>
     </div>
   <%end%>
 
 <div>
-  <h1>All the glitter</h1>
+  <h1 id="posts-title">All the glitter</h1>
   <% @posts.each do |post| %>
     <div class="post-div">
       <div>
@@ -22,7 +22,7 @@
           </p>
         </div>
 
-        <% if current_user !=  User.find(post.user_id)%>
+        <% if current_user !=  User.find(post.user_id) && logged_in?%>
           <div id="like_button_<%= post.id %>", class="like-button-div">
             <%= button_to 'add sparkles', post_likes_path(post), remote: true, class: "like-button"%>
           </div>
