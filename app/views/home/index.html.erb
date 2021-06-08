@@ -1,66 +1,60 @@
-  <% if logged_in? %>
-    <div id="post-button-div">
-      <%= link_to "Sprinkle some glitter", new_post_path, id:"post-button"%>
-    </div>
-  <%end%>
+<% if logged_in? %>
+  <div id="post-button-div">
+    <%= link_to "Sprinkle some glitter", new_post_path, id:"post-button"%>
+  </div>
+<%end%>
 
 <div>
   <h1 id="posts-title">All the glitter</h1>
   <% @posts.each do |post| %>
     <div class="post-div">
+    <div>
+      <p><%=post.body%> </p>
+    </div>
+    <div>
+      <p class="posted-by">posted by <%= post.user.username %> </p>
+    </div>
+
+    <div id="likes-div">
       <div>
-        <p><%=post.body%> </p>
+        <p id="number_likes_<%= post.id %>">
+        <%= post.likes.count %> <%= (post.likes.count) == 1 ? 'sparkle' : 'sparkles'%>
+        </p>
       </div>
 
-      <div>
-        <p class="posted-by">posted by <%= post.user.username %> </p>
-      </div>
-      <div id="likes-div">
-        <div>
-          <p id="number_likes_<%= post.id %>">
-            <%= post.likes.count %> <%= (post.likes.count) == 1 ? 'sparkle' : 'sparkles'%>
-          </p>
-        </div>
-
-        <% if current_user !=  post.user && logged_in?%>
-          <div id="like_button_<%= post.id %>", class="like-button-div">
-            <%= button_to 'add sparkles', post_likes_path(post), remote: true, class: "like-button" %>
-          </div>
-        <% end %>
-
-        <% if logged_in?%>
-        <div id="comment-button-div">
-            <%= form_with model: [ post, post.comments.build ] do |form| %>
-              <p>
-                <%= form.text_area :message, placeholder: "reply..." %>
-              </p>
-              <p>
-                <%= form.submit "reply!" %>
-              </p>
-            <% end %>
-        </div>
-      <% end %>
-
-      <div class="comments-content">
-        <h4>Comments:</h4>
-        <% post.comments.order(created_at: :desc).filter(&:persisted?).each do |comment| %>
-          <div>
-            <p> <%= comment.message %></p>
-            <p> <%= comment.user_id %></p>
-            <p> <%= comment.user.username %></p>
-          </div>
-        <% end %>
-      </div>
-
-
-
-      <% if current_user ==  post.user %>
-        <div class="delete-button">
-          <%= link_to(image_tag("broomdelete.png"), post_path(post), method: :delete,
-              data: { confirm: "Are you sure?" }, id: "sweep-button" )%>
+      <% if current_user !=  post.user && logged_in? %>
+        <div id="like_button_<%= post.id %>", class="like-button-div">
+          <%= button_to 'add sparkles', post_likes_path(post), remote: true, class: "like-button" %>
         </div>
       <% end %>
     </div>
+
+    <% if logged_in? %>
+      <div id="comment-button-div">
+        <%= form_with model: [ post, post.comments.build ] do |form| %>
+          <p> <%= form.text_area :message, placeholder: "reply..." %> </p>
+          <p> <%= form.submit "reply!" %> </p>
+        <% end %>
+      </div>
+    <% end %>
+
+    <div class="comments-content">
+      <h4>Comments:</h4>
+      <% post.comments.order(created_at: :desc).filter(&:persisted?).each do |comment| %>
+        <div>
+          <p> <%= comment.message %></p>
+          <p> <%= comment.user_id %></p>
+          <p> <%= comment.user.username %></p>
+        </div>
+      <% end %>
+    </div>
+
+    <% if current_user ==  post.user %>
+      <div class="delete-button">
+        <%= link_to(image_tag("broomdelete.png"), post_path(post), method: :delete,
+        data: { confirm: "Are you sure?" }, id: "sweep-button" )%>
+      </div>
+    <% end %>
 
     </div>
   <% end %>
