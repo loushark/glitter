@@ -191,7 +191,7 @@ img {
   cursor: pointer;
 }
 
-.like-button:visited {
+.like-button:active {
   font-size: 12px;
   background-color: gray;
 }

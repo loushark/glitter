@@ -13,7 +13,7 @@
       </div>
 
       <div>
-        <p class="posted-by">posted by <%= User.find(post.user_id).username %> </p>
+        <p class="posted-by">posted by <%= post.user.username %> </p>
       </div>
       <div id="likes-div">
         <div>
@@ -22,7 +22,7 @@
           </p>
         </div>
 
-        <% if current_user !=  User.find(post.user_id) && logged_in?%>
+        <% if current_user !=  post.user && logged_in?%>
           <div id="like_button_<%= post.id %>", class="like-button-div">
             <%= button_to 'add sparkles', post_likes_path(post), remote: true, class: "like-button" %>
           </div>
@@ -41,33 +41,20 @@
         </div>
       <% end %>
 
-            <h2>Comments</h2>
-      <% post.comments.each do |comment| %>
-        <p>
-          <strong>Commenter:</strong>
-          <%= comment.user_id %>
-        </p>
-
-        <p>
-          <strong>Comment:</strong>
-          <%= comment.message %>
-        </p>
-      <% end %>
-
-
-
-        <div class="comments-content">
-          <div class="all-comments" id="all-comments-<%=post.id%>">
-              <% @comments.each do |comment| %>
-                <%= comment.message %>
-              <% end %>
+      <div class="comments-content">
+        <h4>Comments:</h4>
+        <% post.comments.order(created_at: :desc).filter(&:persisted?).each do |comment| %>
+          <div>
+            <p> <%= comment.message %></p>
+            <p> <%= comment.user_id %></p>
+            <p> <%= comment.user.username %></p>
           </div>
-        </div>
+        <% end %>
+      </div>
 
 
 
-
-      <% if current_user ==  User.find(post.user_id)%>
+      <% if current_user ==  post.user %>
         <div class="delete-button">
           <%= link_to(image_tag("broomdelete.png"), post_path(post), method: :delete,
               data: { confirm: "Are you sure?" }, id: "sweep-button" )%>
