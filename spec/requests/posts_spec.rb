@@ -1,17 +1,28 @@
 require 'rails_helper'
 
 RSpec.describe "Posts", type: :request do
-  # describe "GET /new" do
-  #   it "returns http success" do
-  #     get "/posts/new"
-  #     expect(response).to have_http_status(:success)
-  #   end
-  # end
+
+  describe "GET /new" do
+    it "returns http success" do
+      get "/posts/new"
+      expect(response).to have_http_status(:success)
+        # have redirect to / if not logged in
+
+    end
+  end
 
   describe "GET /create" do
     it "returns http success" do
       get "/posts/create"
       expect(response).to have_http_status(:success)
+    end
+  end
+
+  describe "POST /create" do
+    it "returns http success" do
+      # post "/posts/create/", params => {:message dgsdf, :user_id, post_id, .......}
+      # expect(response).to redirect_to....to root
+
     end
   end
 
