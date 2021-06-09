@@ -1,53 +1,47 @@
 require 'rails_helper'
 
 RSpec.describe "Sessions", type: :request do
-#   RSpec.describe "Sessions" do
-#   it "signs user in and out" do
-#     # user = create(:user)    ## uncomment if using FactoryBot
-#     user = User.create(username: 'charming_snail', password: "password") ## uncomment if not using FactoryBot
-#     sign_in user
-#     get root_path
-#     expect(response).to render_template(:index) # add gem 'rails-controller-testing' to your Gemfile first.
-#
-#     sign_out user
-#     get root_path
-#     expect(response).not_to render_template(:index) # add gem 'rails-controller-testing' to your Gemfile first.
-#   end
-# end
 
-
-  describe "GET /new" do
-    it "returns http success" do
-      get "/sessions/new"
-
-      expect(response).to have_http_status(:success)
+  describe "GET /signup" do
+    it "returns http success on getting the sign up form" do
+      get signup_path
+      expect(response).to have_http_status(200)
+      expect(response).to render_template(:new)
     end
   end
 
-  describe "POST /create" do
-    it "returns http success" do
-      user = User.create(username: 'charming_snail', password: "password")
-      sign_in user
-      post "/sessions/create"
-      # get login_path
-      expect(response).to have_http_status(:success)
+  describe "POST /signup" do
+    it "redirects and returns http success on submission of sign up" do
+      post signup_path, :params => { :user => { username: "charming_snail", password: "password1" } }
+      expect(response).to redirect_to('/')
+      follow_redirect!
+      expect(response).to have_http_status(200)
+      expect(response.body).to include("welcome charming_snail")
     end
   end
 
   describe "GET /login" do
-    it "returns http success" do
+    it "returns http success on getting login form" do
       get login_path
-      expect(response).to have_http_status(:success)
+      expect(response).to have_http_status(200)
+      expect(response).to render_template(:new)
     end
   end
 
   describe "POST /login" do
-    it "returns http success" do
-      # user = User.create(.......)
-      # post login_path, params => {.....}
+    before do
+      post signup_path, :params => { :user => { username: "charming_snail", password: "password1" } }
+      get "/logout/"
+      follow_redirect!
+    end
 
-      expect(response).to redirect_to(:success)
-       # expect(response.body).to include(“welcome hihi!")
+    it "returns http success on submission of login" do
+      expect(response.body).to include("welcome Guest!")
+      post login_path, :params => { username: "charming_snail", password: "password1" }
+      expect(response).to redirect_to('/')
+      follow_redirect!
+      expect(response).to have_http_status(200)
+      expect(response.body).to include("welcome charming_snail!")
     end
   end
 end

@@ -6,6 +6,9 @@ class PostsController < ApplicationController
     @post = Post.new
   end
 
+  def show
+  end
+
   def create
     @post = Post.create(post_params)
     if @post.save
@@ -13,12 +16,6 @@ class PostsController < ApplicationController
     else
       render :new
     end
-  end
-
-  def show
-  end
-
-  def update
   end
 
   def destroy
