@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'helpers/users_helper_spec.rb'
 
 RSpec.feature "Likes", type: :feature do
   scenario "User can like a post" do
@@ -18,14 +19,14 @@ RSpec.feature "Likes", type: :feature do
     signup("Sparkle_Dino")
     click_link 'Sprinkle some glitter'
     expect(page).to have_content("Sprinkle some glitter!")
-    fill_in 'post_body', with: "This is my first glitter"
+    fill_in 'post_body', with: "This is my second glitter"
     click_button "sprinkle"
     click_link 'Logout'
-    signup("Charming_snail")
+    signup("charlie_cat")
     expect(page).to have_content("0 sparkles")
     click_button 'add sparkles'
     expect(page).to have_content("1 sparkle")
-    click_button 'remove sparkles'
+    click_button 'add sparkles'
     expect(page).to have_content("0 sparkles")
   end
 
