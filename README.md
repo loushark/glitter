@@ -2,6 +2,7 @@
 
 Based on the Makers Academy weekend challenge to build a twitter clone.
 
+------
 
 #### Tech stack
 - Ruby on Rails
