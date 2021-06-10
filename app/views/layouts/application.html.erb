@@ -10,10 +10,12 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <header>
-    <h1 id="page-title">٭Glitter٭</h1>
+    <h1 id="page-title">Glitter</h1>
   </header>
   <nav>
-    <%= link_to(image_tag("home.png"), root_path, id:"home-button" )%>
+    <div id="home-button">
+      <%= link_to(image_tag("home.png"), root_path )%>
+    </div>
     <% if !logged_in? %>
     <h3>welcome Guest!</h3>
       <%= link_to "Sign Up", signup_path, id: "signup-button"%>

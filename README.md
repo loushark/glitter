@@ -1,24 +1,18 @@
-# README
+# GLITTER
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Based on the Makers Academy weekend challenge to build a twitter clone.
 
-Things you may want to cover:
 
-* Ruby version
+#### Tech stack
+- Ruby on Rails
+- PostgreSQL
+- Javascript Ajax requests
+- Rspec
+- Capybara
 
-* System dependencies
 
-* Configuration
+#### How to run the test suite:
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+clone the repo to your local machine
+run bundle install in the command line to install dependencies
+run bundle exec rspec in the command line to run the rspec test suite

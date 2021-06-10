@@ -70,11 +70,11 @@
    font-size: 1.5vmin;
  }
 
-.like-button, #signup-button, #login-button , #logout-button, #post-button  {
+.like-button, #signup-button, #login-button , #logout-button, #post-button, .submit  {
   background-color: #facddc;
   padding: 8px;
   border-radius: 30px;
-  margin: 8px;
+  margin: 3px;
   color: white;
   text-decoration: none;
   text-transform: uppercase;
@@ -97,7 +97,7 @@ footer {
 
 #page-title {
   font-family: "Arial Rounded MT Bold";
-  font-size: 8vmin;
+  font-size: 9vmin;
   background: url('aquaglitter.jpeg');
   -webkit-background-clip: text;
   -moz-background-clip: text;
@@ -118,12 +118,15 @@ footer {
   border-radius: 20px;
   padding: 20px;
   text-align: center;
-  font-weight: 900;
+  font-weight: 700;
   color: #5d6061;
   font-family: arial;
   letter-spacing: 2px;
   position: relative;
   background-color: white;
+  display: grid;
+  justify-content: center;
+  align-items: center;
 
 }
 
@@ -159,7 +162,7 @@ footer {
 .delete-button {
   /* margin-top: 10px; */
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: flex-end;
 }
 
@@ -168,10 +171,6 @@ img {
   height: 25px;
 }
 
-.posted-by{
-  font-size: 12px;
-  padding-top: 15px;
-}
 
 #likes-div {
   margin-top: 30px;
@@ -197,7 +196,12 @@ img {
 }
 
 #home-button {
-  align-self: flex-start;
+  /* display: flex;
+  justify-content: flex-start;
+  align-items: flex-start; */
+  padding: 10px;
+  margin-right: auto;
+  margin-left: 20px;
 }
 
 #posts-title {
@@ -208,6 +212,7 @@ img {
   -moz-background-clip: text;
   background-clip: text;
   color: transparent;
+  margin-top: 20px;
 }
 
 #post-button-div {
@@ -215,8 +220,58 @@ img {
   margin-bottom: 50px;
 }
 
+.posted-by {
+  font-size: 12px;
+  padding-top: 15px;
+}
+
 
 .comments-content {
-  /* border: solid 2px black;
-  width: 300px; */
+  padding: 10px;
+
+}
+
+#comments-title {
+  text-transform: uppercase;
+}
+
+.comments-user {
+  font-size: 10px;
+}
+
+.comments-div {
+  margin: 20px;
+  padding: 10px;
+  font-size: 12px;
+  display: grid;
+  justify-content: center;
+  align-items:center;
+  box-shadow: 0 4px 3px -2px #888888;
+  border-radius: 10px;
+  width: 40vw;
+  background-color: #ebf2fa;
+}
+
+textarea {
+  resize: none;
+  border-radius: 10px;
+  width: 30vw;
+}
+
+.reply {
+  height: 32px;
+  background-color: lightblue;
+  border: none;
+  padding: 8px;
+  border-radius: 30px;
+  color: white;
+  text-decoration: none;
+  text-transform: uppercase;
+
+}
+
+
+.comment-text-area, .comments-reply {
+  display: inline-grid;
+  vertical-align: top;
 }
