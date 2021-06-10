@@ -251,14 +251,14 @@ img {
   align-items:center;
   box-shadow: 0 4px 3px -2px #888888;
   border-radius: 10px;
-  width: 40vw;
+  width: 30vw;
   background-color: #ebf2fa;
 }
 
 textarea {
   resize: none;
   border-radius: 10px;
-  width: 30vw;
+  width: 25vw;
 }
 
 .reply {
@@ -272,7 +272,6 @@ textarea {
   text-transform: uppercase;
 
 }
-
 
 .comment-text-area, .comments-reply {
   display: inline-grid;
