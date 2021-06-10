@@ -127,7 +127,7 @@ footer {
   display: grid;
   justify-content: center;
   align-items: center;
-
+position: relative;
 }
 
 .post-div:before {
@@ -161,9 +161,10 @@ footer {
 
 .delete-button {
   /* margin-top: 10px; */
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
+  position: absolute;
+  left: 90%;
+  bottom: 10%;
+
 }
 
 img {
