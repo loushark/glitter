@@ -98,7 +98,8 @@ footer {
 #page-title {
   font-family: "Arial Rounded MT Bold";
   font-size: 9vmin;
-  background: url('aquaglitter.jpeg');
+  /* background: url('app/assets/stylesheets/aquaglitter.jpeg'); */
+  background-color: #34cceb;
   -webkit-background-clip: text;
   -moz-background-clip: text;
   background-clip: text;
@@ -208,7 +209,8 @@ img {
 #posts-title {
   font-family: "Arial Rounded MT Bold";
   font-size: 4vmin;
-  background: url('aquaglitter.jpeg');
+  /* background: url('app/assets/stylesheets/aquaglitter.jpeg'); */
+  background-color: #34cceb;
   -webkit-background-clip: text;
   -moz-background-clip: text;
   background-clip: text;
