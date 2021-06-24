@@ -1,5 +1,7 @@
 # GLITTER
 
+<img src="/glitter.png" width="700">
+
 Based on the Makers Academy weekend challenge to build a twitter clone.
 
 ------
