@@ -31,7 +31,7 @@
     </div>
 
     <div class="comments-content">
-      <% post.comments.order(created_at: :desc).filter(&:persisted?).each do |comment| %>
+      <% post.comments.filter(&:persisted?).each do |comment| %>
         <div class="comments-div">
           <p class="comments-body"> <%= comment.message %></p>
           <p class="comments-user"> <%= comment.user.username %></p>
