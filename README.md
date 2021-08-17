@@ -18,7 +18,7 @@ here's some deets:
 - your username and encrypted password is saved to a database via herouku which only i have access to - message me if you would like this deleted!
 - posts can be deleted by the user who made the post  
 - comments on posts cannot currently be deleted, but they will be deleted if the main post is deleted
--  you can like or unlike a post by "adding glitter"  
+- you can like or unlike a post by "adding glitter"  
 
 -----
 
@@ -50,7 +50,7 @@ run bundle exec rspec in the command line to run the rspec test suite
 #### 💡  Some notes on what i learned during this project:
 - **Performance issues with n+1**  
   In the terminal window upon loading the server and interacting with the webapp:  
-  One query for loding the buuilds followed by N queries for loading the branch in each iteration.  
+  One query for loading the builds followed by N queries for loading the branch in each iteration.  
   This is fixed with eager loading using a .includes method to pre-load data:
   ````
   app/controllers/home_controller.rb
@@ -58,7 +58,7 @@ run bundle exec rspec in the command line to run the rspec test suite
   ````
 - **.build in comments form**  
   this will build an instance of a model before submit.  
-  When rendering the result an extra empty element will be rendered, the render may need to be placed before the form OR a condition added to only render data that has persisted in the database, using an iteration that filters and finds only the persisted data :  
+  When rendering the result, an extra empty element will be rendered, the render may need to be placed before the form OR a condition added to only render data that has persisted in the database, using an iteration that filters and finds only the persisted data :  
   ````
   <% post.comments.order(created_at: :desc).filter(&:persisted?).each do |comment| %>
     <div class="comments-div">
@@ -78,7 +78,7 @@ run bundle exec rspec in the command line to run the rspec test suite
        redirect_to root_url
   end
   ````
-  now we can access both cooment and username
+  now we can access both comment and username
   ````
   <p class="comments-body"> <%= comment.message %></p>
   <p class="comments-user"> <%= comment.user.username %></p>
