@@ -83,3 +83,25 @@ run bundle exec rspec in the command line to run the rspec test suite
   <p class="comments-body"> <%= comment.message %></p>
   <p class="comments-user"> <%= comment.user.username %></p>
   ````
+    
+- **dependencies on destroying data**  
+  when deleting a post, the comments and likes need to be deleted along with it.  
+  add a dependancy to destroy to the parent model
+  ````
+    Posts model:
+    has_many :comments, dependent: :destroy
+    has_many :likes, dependent: :destroy
+  ````
+    
+    
+  ----
+#### 🔗 useful links:
+- Authentication:  
+  - [https://levelup.gitconnected.com/simple-authentication-guide-with-ruby-on-rails-16a6255f0be8](https://levelup.gitconnected.com/simple-authentication-guide-with-ruby-on-rails-16a6255f0be8)  
+  - [https://medium.com/@wintermeyer/authentication-from-scratch-with-rails-5-2-92d8676f6836](https://medium.com/@wintermeyer/authentication-from-scratch-with-rails-5-2-92d8676f6836)  
+- Liking and unliking:
+  - https://medium.com/full-taxx/how-to-add-likes-to-posts-in-rails-e81430101bc2  
+- Testing requests not controllers:  
+  - https://medium.com/just-tech/rspec-controller-or-request-specs-d93ef563ef11
+- Deploying webapp on heroku
+   - https://devcenter.heroku.com/articles/getting-started-with-ruby#prepare-the-app
